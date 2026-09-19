@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoboNAARA ☆</title>
+
+  <style>
+    :root {
+      --black: #070b12;
+      --dark: #111a26;
+      --dark-blue: #18283b;
+      --white: #f8fcff;
+      --silver: #b8c4d0;
+      --baby-blue: #c4edff;
+      --blue: #76c8ff;
+      --electric: #1688f5;
+      --pale: #e5f7ff;
+      --shadow: 7px 8px 0 rgba(0, 0, 0, .45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--white);
+      background: var(--black);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    body::selection {
+      color: var(--black);
+      background: var(--baby-blue);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 15px 0;
+      background: rgba(7, 11, 18, .94);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--silver);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      transform: rotate(-3deg);
+    }
+
+    .logo::before {
+      content: "♡ ";
+      color: var(--baby-blue);
+    }
+
+    .logo span {
+      color: var(--baby-blue);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--silver);
+      font-size: .7rem;
+      font-weight: bold;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 85px 0;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-position: center;
+      background-size: cover;
+      opacity: .2;
+      filter: grayscale(35%);
+    }
+
+    section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(7, 11, 18, .77);
+    }
+
+    section > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero::before {
+      background-image: url("images/group-photo.jpg");
+    }
+
+    .nara-section::before {
+      background-image: url("images/nara-x.jpg");
+    }
+
+    .ajax-section::before {
+      background-image: url("images/ajax.jpg");
+    }
+
+    .team-section::before {
+      background-image: url("images/team-photo.jpg");
+    }
+
+    .weeks-section::before {
+      background-image: url("images/robot-progress.jpg");
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: .72rem;
+      font-weight: bold;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.03;
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin-bottom: 24px;
+      font-size: clamp(3.1rem, 8vw, 7rem);
+      letter-spacing: -.1em;
+    }
+
+    h1 span,
+    h2 span {
+      color: var(--baby-blue);
+    }
+
+    h2 {
+      margin-bottom: 28px;
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      letter-spacing: -.08em;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      letter-spacing: -.04em;
+    }
+
+    p {
+      color: var(--silver);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .scribble {
+      position: absolute;
+      color: var(--blue);
+      font-size: 2rem;
+      font-weight: bold;
+      transform: rotate(-12deg);
+      opacity: .8;
+    }
+
+    .scribble.one {
+      top: 18px;
+      right: 5%;
+    }
+
+    .scribble.two {
+      bottom: 20px;
+      left: 3%;
+      transform: rotate(12deg);
+    }
+
+    .sticker {
+      display: inline-block;
+      padding: 7px 15px;
+      color: var(--black);
+      background: var(--baby-blue);
+      border: 2px solid var(--black);
+      border-radius: 9px;
+      box-shadow: 4px 4px 0 var(--silver);
+      font-size: .7rem;
+      font-weight: bold;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+    }
+
+    .sticker::before {
+      content: "🎀 ";
+    }
+
+    .tiny-note {
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: bold;
+      transform: rotate(2deg);
+    }
+
+    .hero {
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(196, 237, 255, .18), transparent 24%),
+        radial-gradient(circle at 90% 75%, rgba(22, 136, 245, .18), transparent 24%),
+        var(--black);
+    }
+
+    .hero::after {
+      background: rgba(7, 11, 18, .62);
+    }
+
+    .hero-grid,
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .lead {
+      max-width: 600px;
+      font-size: 1.1rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      color: var(--white);
+      border: 2px solid var(--silver);
+      border-radius: 13px;
+      font-size: .73rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-4px) rotate(-2deg);
+    }
+
+    .button-blue {
+      color: var(--black);
+      background: var(--baby-blue);
+      border-color: var(--baby-blue);
+    }
+
+    .button-outline {
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .hero-visual {
+      padding: 22px;
+      background: linear-gradient(135deg, var(--baby-blue), var(--electric));
+      border: 3px solid var(--white);
+      border-radius: 35px 20px 45px 27px;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .hero-photo-grid {
+      min-height: 375px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .top-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 170px;
+      padding: 16px;
+      color: var(--black);
+      font-size: .7rem;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      border: 3px dashed var(--black);
+      overflow: hidden;
+    }
+
+    .top-photo.group {
+      min-height: 280px;
+      background: var(--pale);
+      border-radius: 44px 18px 25px 20px;
+    }
+
+    .top-photo.logo-space {
+      background: var(--silver);
+      border-radius: 18px 38px 20px 30px;
+    }
+
+    .top-photo span,
+    .photo-slot span {
+      padding: 8px 11px;
+      background: rgba(255, 255, 255, .55);
+      border-radius: 9px;
+    }
+
+    .nara-section {
+      background: #101923;
+    }
+
+    .ajax-section {
+      background: #111b29;
+    }
+
+    .team-section {
+      background: #0e1620;
+      border-top: 2px solid var(--silver);
+      border-bottom: 2px solid var(--silver);
+    }
+
+    .weeks-section {
+      background: #101a26;
+    }
+
+    .card,
+    .report-card,
+    .member,
+    .week-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card {
+      min-height: 275px;
+      padding: 31px;
+      border: 2px solid var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    .card::before,
+    .report-card::before,
+    .member::before,
+    .week-card::before {
+      content: "♡";
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      color: rgba(0, 0, 0, .25);
+      font-size: 2.1rem;
+      transform: rotate(15deg);
+    }
+
+    .baby-card {
+      color: var(--black);
+      background: var(--baby-blue);
+      border-radius: 22px 45px 29px 17px;
+      transform: rotate(-1deg);
+    }
+
+    .electric-card {
+      color: var(--white);
+      background: var(--electric);
+      border-radius: 45px 19px 27px 42px;
+      transform: rotate(1deg);
+    }
+
+    .card p,
+    .report-card p {
+      color: inherit;
+      opacity: .84;
+    }
+
+    .photo-slot {
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--pale), var(--silver));
+      border: 3px dashed var(--black);
+      border-radius: 20px 42px 24px 35px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      font-size: .78rem;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(1deg);
+    }
+
+    .report-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 32px;
+    }
+
+    .report-card {
+      min-height: 260px;
+      padding: 29px;
+      border: 2px solid var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    .report-card.blue {
+      color: var(--black);
+      background: var(--baby-blue);
+      border-radius: 40px 18px 28px 20px;
+      transform: rotate(1deg);
+    }
+
+    .report-card.silver {
+      color: var(--black);
+      background: var(--silver);
+      border-radius: 18px 33px 22px 40px;
+      transform: rotate(-1deg);
+    }
+
+    .small-photo {
+      height: 105px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 19px;
+      color: var(--black);
+      font-size: .68rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: 2px dashed var(--black);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 44px;
+    }
+
+    .member {
+      min-height: 445px;
+      padding: 23px 19px;
+      text-align: center;
+      background: rgba(17, 26, 38, .94);
+      border: 2px solid var(--silver);
+      box-shadow: var(--shadow);
+      transition: .2s ease;
+    }
+
+    .member:nth-child(3n + 1) {
+      border-radius: 22px 40px 27px 33px;
+      transform: rotate(-1deg);
+    }
+
+    .member:nth-child(3n + 2) {
+      border-radius: 40px 20px 32px 24px;
+      transform: rotate(1deg);
+    }
+
+    .member:nth-child(3n + 3) {
+      border-radius: 27px 34px 20px 43px;
+      transform: rotate(-.5deg);
+    }
+
+    .member:hover {
+      transform: translateY(-8px) rotate(0);
+    }
+
+    .member-photo {
+      width: 100%;
+      height: 285px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 21px;
+      overflow: hidden;
+      color: var(--black);
+      font-size: 3rem;
+      font-weight: bold;
+      background: var(--baby-blue);
+      border: 3px solid var(--white);
+      border-radius: 22px;
+    }
+
+    .member:nth-child(2n) .member-photo {
+      background: var(--electric);
+    }
+
+    .member:nth-child(3n) .member-photo {
+      background: var(--silver);
+    }
+
+    .member h3 {
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    .member p {
+      margin: 0;
+      color: var(--baby-blue);
+      font-size: .73rem;
+      font-weight: bold;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 44px;
+    }
+
+    .week-card {
+      min-height: 575px;
+      display: flex;
+      flex-direction: column;
+      padding: 31px 25px 22px;
+      color: var(--black);
+      border: 2px solid var(--black);
+      box-shadow: var(--shadow);
+      transition: .2s ease;
+    }
+
+    .week-card:nth-child(4n + 1) {
+      background: var(--baby-blue);
+      border-radius: 29px 46px 23px 37px;
+      transform: rotate(-1deg);
+    }
+
+    .week-card:nth-child(4n + 2) {
+      color: var(--white);
+      background: var(--electric);
+      border-radius: 46px 21px 31px 24px;
+      transform: rotate(1deg);
+    }
+
+    .week-card:nth-child(4n + 3) {
+      background: var(--silver);
+      border-radius: 21px 37px 43px 19px;
+      transform: rotate(-.5deg);
+    }
+
+    .week-card:nth-child(4n + 4) {
+      background: var(--pale);
+      border-radius: 37px 21px 27px 44px;
+      transform: rotate(1deg);
+    }
+
+    .week-card:hover {
+      transform: translateY(-9px) rotate(0deg);
+    }
+
+    .week-number {
+      font-size: .78rem;
+      font-weight: bold;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+
+    .week-card h3 {
+      margin: 21px 0 13px;
+      font-size: 1.5rem;
+    }
+
+    .week-card p {
+      color: inherit;
+      opacity: .8;
+      font-size: .98rem;
+      line-height: 1.55;
+      margin-bottom: 21px;
+    }
+
+    .week-photo {
+      height: 175px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 19px;
+      overflow: hidden;
+      font-size: .7rem;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      border: 3px dashed currentColor;
+      border-radius: 19px;
+    }
+
+    .week-report {
+      flex-grow: 1;
+      min-height: 140px;
+      padding: 17px;
+      color: rgba(0, 0, 0, .72);
+      font-size: .92rem;
+      background: rgba(255, 255, 255, .48);
+      border: 1px solid rgba(0, 0, 0, .2);
+      border-radius: 17px;
+    }
+
+    footer {
+      padding: 35px 0;
+      color: var(--silver);
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+      background: #05070a;
+    }
+
+    footer span {
+      color: var(--baby-blue);
+    }
+
+    /* intro screen: slowed by 3 seconds */
+
+    #intro-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(196, 237, 255, .35), transparent 22%),
+        radial-gradient(circle at 80% 75%, rgba(22, 136, 245, .3), transparent 25%),
+        var(--black);
+      animation: introLeave 1.5s ease-in-out 9.4s forwards;
+    }
+
+    #intro-screen::before,
+    #intro-screen::after {
+      content: "♡";
+      position: absolute;
+      font-size: 5rem;
+      color: var(--baby-blue);
+      opacity: .7;
+    }
+
+    #intro-screen::before {
+      top: 14%;
+      left: 13%;
+      transform: rotate(-20deg);
+      animation: floatDecoration 3.6s ease-in-out infinite;
+    }
+
+    #intro-screen::after {
+      right: 13%;
+      bottom: 15%;
+      color: var(--electric);
+      transform: rotate(15deg);
+      animation: floatDecoration 4.2s ease-in-out infinite reverse;
+    }
+
+    .intro-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .intro-logo {
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--electric);
+      background: var(--baby-blue);
+      border: 5px solid var(--white);
+      border-radius: 42% 58% 52% 48% / 55% 43% 57% 45%;
+      box-shadow: 12px 13px 0 rgba(0, 0, 0, .45);
+      transform: translateX(-150vw) rotate(-35deg) scale(0.25);
+      animation: logoSwish 3.2s cubic-bezier(.18, .89, .32, 1.2) forwards;
+    }
+
+    .intro-logo img {
+      width: 86%;
+      height: 86%;
+      object-fit: contain;
+    }
+
+    .intro-team-name {
+      margin: 48px 0 10px;
+      color: var(--white);
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      letter-spacing: -0.08em;
+      opacity: 0;
+      transform: translateY(28px) scale(0.9);
+      animation: nameAppear 1.4s ease-out 5.0s forwards;
+    }
+
+    .intro-projects {
+      margin: 0;
+      color: var(--baby-blue);
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: bold;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: projectsAppear 1.2s ease-out 7.1s forwards;
+    }
+
+    .intro-projects span {
+      color: var(--silver);
+      padding: 0 10px;
+    }
+
+    @keyframes logoSwish {
+      0% {
+        opacity: 0;
+        transform: translateX(-150vw) rotate(-35deg) scale(0.25);
+      }
+
+      58% {
+        opacity: 1;
+        transform: translateX(28px) rotate(9deg) scale(1.08);
+      }
+
+      76% {
+        transform: translateX(-12px) rotate(-5deg) scale(0.98);
+      }
+
+      88% {
+        transform: translateX(6px) rotate(2deg) scale(1.02);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+      }
+    }
+
+    @keyframes nameAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.9);
+      }
+
+      70% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.04);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes projectsAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes introLeave {
+      0% {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      75% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+
+    @keyframes floatDecoration {
+      0%, 100% {
+        translate: 0 0;
+      }
+
+      50% {
+        translate: 0 -18px;
+      }
+    }
+
+    #music-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 10000;
+      padding: 11px 16px;
+      color: var(--black);
+      background: var(--baby-blue);
+      border: 2px solid var(--white);
+      border-radius: 14px;
+      box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: bold;
+      transition: .2s ease;
+    }
+
+    #music-button:hover {
+      background: var(--electric);
+      color: var(--white);
+      transform: rotate(-2deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #intro-screen,
+      .intro-logo,
+      .intro-team-name,
+      .intro-projects {
+        animation: none;
+      }
+
+      #intro-screen {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+
+    @media (max-width: 950px) {
+      .hero-grid,
+      .two-column,
+      .report-row {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid,
+      .weeks-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        gap: 10px 15px;
+      }
+
+      .hero-photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .top-photo.group,
+      .top-photo.logo-space {
+        min-height: 160px;
+      }
+
+      .team-grid,
+      .weeks-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 62px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="intro-screen">
+    <div class="intro-content">
+      <div class="intro-logo">
+        <img src="images/logo.jpeg" alt="RoboNAARA logo">
+      </div>
+      <h1 class="intro-team-name">RoboNAARA</h1>
+      <p class="intro-projects">Nara X <span>·</span> Ajax</p>
+    </div>
+  </div>
+
+  <audio id="background-music" loop>
+    <source src="images/phonk.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="music-button" type="button">♫ Music</button>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Robo<span>NAARA</span></div>
+
+        <ul class="nav-links">
+          <li><a href="#nara-x">Nara X</a></li>
+          <li><a href="#ajax">Ajax</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#weeks">Weeks</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- hero -->
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <span class="scribble one">☆ ☆ ☆</span>
+
+        <div>
+          <div class="sticker">our robotics team · 2026</div>
+
+          <h1>
+            we are
+            <span>RoboNAARA.</span>
+          </h1>
+
+          <p class="lead">
+            We are seven students building, testing, changing, and sometimes
+            completely rethinking our ideas. This website is basically our
+            project scrapbook.
+          </p>
+
+          <p class="tiny-note">made by us, probably while procrastinating ☆</p>
+
+          <div class="buttons">
+            <a class="button button-blue" href="#ajax">see Ajax</a>
+            <a class="button button-outline" href="#team">meet us</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo-grid">
+            <div class="top-photo group">
+              <span>our group photo</span>
+            </div>
+
+            <div class="top-photo logo-space">
+              <span>our logo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nara X -->
+
+    <section id="nara-x" class="nara-section">
+      <div class="container">
+        <span class="scribble two">♡</span>
+
+        <div class="eyebrow">01 · our innovation project</div>
+        <h2>Nara <span>X</span></h2>
+
+        <div class="two-column">
+
+          <div class="card baby-card">
+            <h3>okay, so what is Nara X?</h3>
+
+            <p>
+              Nara X is our innovation project. We started with a problem,
+              shared way too many ideas, and slowly worked out what we wanted
+              to create. It is still changing, so this part might change too.
+            </p>
+          </div>
+
+          <div class="photo-slot">
+            <span>our Nara X photo</span>
+          </div>
+
+        </div>
+
+        <div class="report-row">
+
+          <div class="report-card blue">
+            <h3>our Nara X notes</h3>
+
+            <p>
+              This is where we can add our research, sketches, experiments,
+              random thoughts, and things we discover while working.
+            </p>
+
+            <div class="small-photo">add a report photo</div>
+          </div>
+
+          <div class="report-card silver">
+            <h3>things we learned</h3>
+
+            <p>
+              Not everything worked the first time. We can add our mistakes,
+              changes, and improvements here.
+            </p>
+
+            <div class="small-photo">add a progress photo</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Ajax -->
+
+    <section id="ajax" class="ajax-section">
+      <div class="container">
+        <div class="eyebrow">02 · the robot we are building</div>
+        <h2>meet <span>Ajax.</span></h2>
+
+        <div class="two-column">
+
+          <div class="photo-slot">
+            <span>our Ajax photo</span>
+          </div>
+
+          <div class="card electric-card">
+            <h3>still under construction...</h3>
+
+            <p>
+              Ajax is our robot. We designed it, built it, tested it, and
+              changed parts of it when they did not work properly. We are
+              learning as we go.
+            </p>
+
+            <p><strong>mechanism:</strong> add our mechanism here.</p>
+            <p><strong>power:</strong> add our power system here.</p>
+            <p><strong>special skill:</strong> add what Ajax does best here.</p>
+          </div>
+
+        </div>
+
+        <div class="report-row">
+
+          <div class="report-card silver">
+            <h3>building Ajax</h3>
+
+            <p>
+              Add what we built each week, what materials we used, and any
+              problems we had while putting Ajax together.
+            </p>
+
+            <div class="small-photo">add a building photo</div>
+          </div>
+
+          <div class="report-card blue">
+            <h3>testing Ajax</h3>
+
+            <p>
+              Add what we tested, what went wrong, and how we tried to fix it.
+            </p>
+
+            <div class="small-photo">add a testing photo</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+
+    <section id="team" class="team-section">
+      <div class="container">
+        <div class="eyebrow">03 · the people doing the work</div>
+        <h2>meet the <span>team.</span></h2>
+
+        <p>
+          We all have different jobs, but nobody only does one thing.
+          Everyone gets dragged into everything eventually.
+        </p>
+
+        <div class="team-grid">
+          <div class="member">
+  <div class="member-photo">
+    <img src="images/aaradhya.jpeg" alt="Aaradhya Srivastava">
+  </div>
+  <h3>Aaradhya Srivastava</h3>
+  <p>team leader · a bit of everything</p>
+</div>
+
+          <div class="member">
+            <div class="member-photo">
+              <img src="images/nivedita.jpeg" alt="Nivedita">
+            </div>
+            <h3>Nivedita</h3>
+            <p>innovation head · ideas person</p>
+          </div>
+
+          <div class="member">
+            <div class="member-photo">
+              <img src="images/arnav-pande.jpeg" alt="Arnav Pande">
+            </div>
+            <h3>Arnav Pande</h3>
+            <p>driver · controls Ajax</p>
+          </div>
+
+          <div class="member">
+            <div class="member-photo">
+              <img src="images/arnav-belpande.jpg" alt="Arnav Belpande">
+            </div>
+            <h3>Arnav Belpande</h3>
+            <p>designer · makes things look good</p>
+          </div>
+
+          <div class="member">
+            <div class="member-photo">
+              <img src="images/rudransh.jpeg" alt="Rudransh Dwivedi">
+            </div>
+            <h3>Rudransh Dwivedi</h3>
+            <p>marketing head · tells people about us</p>
+          </div>
+S
+          <div class="member">
+            <div class="member-photo">
+              <img src="images/ishita.jpeg" alt="Ishita Gupta">
+            </div>
+            <h3>Ishita Gupta</h3>
+            <p>social media head · posts our progress</p>
+          </div>
+
+          <div class="member">
+            <div class="member-photo">
+              <img src="images/jaivardhan.jpeg" alt="Jayvardhan Shinde">
+            </div>
+            <h3>Jayvardhan Shinde</h3>
+            <p>mechanic · builds and fixes Ajax</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Weeks -->
+
+    <section id="weeks" class="weeks-section">
+      <div class="container">
+        <div class="eyebrow">04 · what we have been doing</div>
+        <h2>our weekly <span>progress.</span></h2>
+
+        <p>
+          This is our project diary. There is space for a photo and a short
+          report every week, because the behind-the-scenes stuff matters too.
+        </p>
+
+        <div class="weeks-grid">
+
+          <div class="week-card">
+            <div class="week-number">week 1</div>
+            <h3>getting started</h3>
+            <p>We got together, shared ideas, and decided where to begin.</p>
+            <div class="week-photo">add week 1 photo</div>
+            <div class="week-report">write the week 1 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 2</div>
+            <h3>planning</h3>
+            <p>We worked out our jobs, made a plan, and organised our ideas.</p>
+            <div class="week-photo">add week 2 photo</div>
+            <div class="week-report">write the week 2 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 3</div>
+            <h3>Nara X</h3>
+            <p>We focused on Nara X and started turning the idea into a project.</p>
+            <div class="week-photo">add week 3 photo</div>
+            <div class="week-report">write the week 3 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 4</div>
+            <h3>making it real</h3>
+            <p>We stopped just talking about the idea and started making things.</p>
+            <div class="week-photo">add week 4 photo</div>
+            <div class="week-report">write the week 4 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 5</div>
+            <h3>design Ajax</h3>
+            <p>We thought about how Ajax should look, move, and fit together.</p>
+            <div class="week-photo">add week 5 photo</div>
+            <div class="week-report">write the week 5 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 6</div>
+            <h3>building Ajax</h3>
+            <p>We started putting Ajax together and dealt with problems.</p>
+            <div class="week-photo">add week 6 photo</div>
+            <div class="week-report">write the week 6 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 7</div>
+            <h3>testing</h3>
+            <p>We tested Ajax, found things that did not work, and tried fixes.</p>
+            <div class="week-photo">add week 7 photo</div>
+            <div class="week-report">write the week 7 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 8</div>
+            <h3>bringing it together</h3>
+            <p>We connected the robot, research, and presentation.</p>
+            <div class="week-photo">add week 8 photo</div>
+            <div class="week-report">write the week 8 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 9</div>
+            <h3>final checks</h3>
+            <p>We checked the important details and fixed final problems.</p>
+            <div class="week-photo">add week 9 photo</div>
+            <div class="week-report">write the week 9 report here.</div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-number">week 10</div>
+            <h3>final preps</h3>
+            <p>We finished the presentation and got everything ready to show.</p>
+            <div class="week-photo">add week 10 photo</div>
+            <div class="week-report">write the week 10 report here.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Robo<span>NAARA</span> · our project, our progress, our robot ☆
+  </footer>
+
+  <script>
+    const music = document.getElementById("background-music");
+    const musicButton = document.getElementById("music-button");
+
+    if (music) {
+      music.volume = 0.22;
+
+      musicButton.addEventListener("click", () => {
+        if (music.paused) {
+          music.play();
+          musicButton.textContent = "♫ Pause";
+        } else {
+          music.pause();
+          musicButton.textContent = "♫ Music";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
